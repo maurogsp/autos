@@ -34,4 +34,16 @@ public class Servicio {
         return coleccion.getautoxmarca(d);
     }
 
+    public void newAuto (String desc, String mod, int km, String p, int a )
+    {
+        Marca m = new Marca(desc);
+        Auto auto = new Auto();
+        auto.setMarca(m);
+        auto.setModelo(mod);
+        auto.setKilometros(km);
+        auto.setPatente(p);
+        auto.setAnio(a);
+        this.coleccion.getLista().add(auto);
+    }
+
 }

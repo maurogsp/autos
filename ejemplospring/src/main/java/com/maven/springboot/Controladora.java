@@ -1,5 +1,6 @@
 package com.maven.springboot;
 
+import com.maven.springboot.Request.Autorequest;
 import com.maven.springboot.beans.Auto;
 import com.maven.springboot.beans.Servicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,7 +65,17 @@ public class Controladora {
         {
             return new ResponseEntity<Auto>(HttpStatus.NOT_FOUND);
         }
-        
+
+    }
+
+    @RequestMapping(value = "/autos", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity addAuto(@RequestBody Autorequest request) {
+        try {
+            servi.newAuto(request.getMarca(), request.getModelo(), request.getKilometros(),request.getPatente(),request.getAnio());
+            return new ResponseEntity(HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }

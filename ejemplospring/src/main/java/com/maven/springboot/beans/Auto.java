@@ -23,6 +23,11 @@ public class Auto {
         this.modelo = modelo;
     }
 
+    public Auto()
+    {
+
+    }
+
     @Autowired
     public Auto (Marca marquita)
     {
@@ -74,4 +79,6 @@ public class Auto {
     public void setAnio(int anio) {
         this.anio = anio;
     }
+
+
 }
